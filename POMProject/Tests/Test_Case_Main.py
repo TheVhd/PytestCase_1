@@ -21,6 +21,7 @@ class LoginTest(unittest.TestCase):
         login.enter_username("user@phptravels.com")
         login.enter_password("demouser")
         login.click_login()
+        print("Login Completed")
 
         home_page = LandingPage(driver)
         home_page.click_home()
@@ -28,7 +29,6 @@ class LoginTest(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        print("Login Completed")
         time.sleep(2)
         cls.driver.close()
 

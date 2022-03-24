@@ -3,6 +3,7 @@ from selenium import webdriver
 import unittest
 from POMProject.Pages.Credentials import Credentials
 from POMProject.Pages.LandingPage import LandingPage
+from POMProject.Pages.Hotels import Hotels
 
 
 class LoginTest(unittest.TestCase):
@@ -17,15 +18,27 @@ class LoginTest(unittest.TestCase):
         driver = self.driver
         driver.get("https://www.phptravels.net/login")
 
+        # login to the system
         login = Credentials(driver)
         login.enter_username("user@phptravels.com")
         login.enter_password("demouser")
         login.click_login()
         print("Login Completed")
 
+        # Browse the page and go to the Hotels Page
         home_page = LandingPage(driver)
         home_page.click_home()
         home_page.click_hotels()
+        print('Browsing Completed')
+
+        # Select a hotel to see
+        visitHotel = Hotels(driver)
+        visitHotel.click_hotel()
+        print('in the hotel page now')
+        visitHotel.pickOne()
+        print('picked a tariff')
+        visitHotel.bookNow()
+        print('Time to payout')
 
     @classmethod
     def tearDownClass(cls):

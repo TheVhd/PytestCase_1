@@ -12,6 +12,10 @@ class LandingPage():
     def click_hotels(self):
         self.driver.find_element_by_xpath(self.Hotels_link_xpath).click()
 
+    def execute(self):
+        self.click_home()
+        self.click_hotels()
+
 
 
 
